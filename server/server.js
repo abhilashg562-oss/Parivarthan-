@@ -16,6 +16,7 @@ app.post("/test", (req, res) => {
 // Only load providers route for now
 app.use("/api/providers", require("./routes/providers"));
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/bookings", require("./routes/bookings"));
 // Health check
 app.get("/", (req, res) => {
   res.json({ status: "GigMarket API running 🚀" });
