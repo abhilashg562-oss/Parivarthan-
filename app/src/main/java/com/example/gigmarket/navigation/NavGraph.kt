@@ -8,6 +8,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.gigmarket.ui.auth.LoginScreen
 import com.example.gigmarket.ui.auth.RegisterScreen
+import com.example.gigmarket.ui.dashboard.DashboardScreen
+import com.example.gigmarket.ui.dashboard.ProviderDashboardScreen
+import com.example.gigmarket.ui.provider.ProviderDetailScreen
+import com.example.gigmarket.ui.booking.BookingScreen
+import com.example.gigmarket.ui.booking.BookingHistoryScreen
 import com.example.gigmarket.viewmodel.AuthViewModel
 
 sealed class Screen(val route: String) {
@@ -55,7 +60,7 @@ fun NavGraph(
             val role by authViewModel.userRole.collectAsState()
 
             if (role == "provider") {
-                com.example.gigmarket.ui.dashboard.ProviderDashboardScreen(
+                ProviderDashboardScreen(
                     authViewModel = authViewModel,
                     onLogout = {
                         navController.navigate(Screen.Login.route) {
@@ -64,7 +69,7 @@ fun NavGraph(
                     }
                 )
             } else {
-                com.example.gigmarket.ui.dashboard.DashboardScreen(
+                DashboardScreen(
                     authViewModel = authViewModel,
                     onProviderClick = { providerId ->
                         navController.navigate(Screen.ProviderDetail.createRoute(providerId))
@@ -82,7 +87,7 @@ fun NavGraph(
         }
         composable(Screen.ProviderDetail.route) { backStackEntry ->
             val providerId = backStackEntry.arguments?.getString("providerId") ?: return@composable
-            com.example.gigmarket.ui.provider.ProviderDetailScreen(
+            ProviderDetailScreen(
                 providerId = providerId,
                 onBack = { navController.popBackStack() },
                 onBookClick = { provider ->
@@ -93,7 +98,7 @@ fun NavGraph(
         composable(Screen.Booking.route) { backStackEntry ->
             val providerId = backStackEntry.arguments?.getString("providerId") ?: return@composable
             val providerName = backStackEntry.arguments?.getString("providerName") ?: ""
-            com.example.gigmarket.ui.booking.BookingScreen(
+            BookingScreen(
                 providerId = providerId,
                 providerName = providerName,
                 onBack = { navController.popBackStack() },
@@ -105,9 +110,10 @@ fun NavGraph(
             )
         }
         composable(Screen.BookingHistory.route) {
-            com.example.gigmarket.ui.booking.BookingHistoryScreen(
+            BookingHistoryScreen(
                 onBack = { navController.popBackStack() }
             )
         }
     }
 }
+

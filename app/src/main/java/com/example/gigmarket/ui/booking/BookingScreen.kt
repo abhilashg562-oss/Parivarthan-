@@ -1,5 +1,6 @@
 package com.example.gigmarket.ui.booking
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -7,8 +8,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.gigmarket.ui.components.NeonButton
+import com.example.gigmarket.ui.components.NeonTextField
+import com.example.gigmarket.ui.theme.*
 import com.example.gigmarket.viewmodel.BookingState
 import com.example.gigmarket.viewmodel.BookingViewModel
 
@@ -31,71 +39,107 @@ fun BookingScreen(
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Book $providerName") },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                }
-            )
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "Please provide your details for the booking.",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 24.dp)
-            )
-
-            OutlinedTextField(
-                value = address,
-                onValueChange = { address = it },
-                label = { Text("Service Address") },
-                modifier = Modifier.fillMaxWidth(),
-                minLines = 3
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = notes,
-                onValueChange = { notes = it },
-                label = { Text("Add Notes (Optional)") },
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("e.g. Please bring extra tools") },
-                minLines = 2
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            if (bookingState is BookingState.Loading) {
-                CircularProgressIndicator()
-            } else {
-                Button(
-                    onClick = { viewModel.createBooking(providerId, address, notes) },
-                    modifier = Modifier.fillMaxWidth(),
-                    enabled = address.isNotBlank()
-                ) {
-                    Text("Confirm Booking")
-                }
-            }
-
-            if (bookingState is BookingState.Error) {
-                Text(
-                    text = (bookingState as BookingState.Error).message,
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.padding(top = 16.dp)
+    NeonTheme {
+        Scaffold(
+            containerColor = DarkBackground,
+            topBar = {
+                CenterAlignedTopAppBar(
+                    title = {
+                        Text(
+                            "Book Service",
+                            color = NeonBlue,
+                            fontWeight = FontWeight.ExtraBold
+                        )
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onBack) {
+                            Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
+                        }
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = DarkBackground.copy(alpha = 0.9f)
+                    )
                 )
+            }
+        ) { paddingValues ->
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(DarkBackground, Color(0xFF130026))
+                        )
+                    )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Booking with $providerName",
+                        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                        color = Color.White,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    
+                    Text(
+                        text = "SECURE YOUR GIG",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = NeonPurple,
+                        modifier = Modifier.padding(bottom = 32.dp)
+                    )
+
+                    NeonTextField(
+                        value = address,
+                        onValueChange = { address = it },
+                        label = "Service Location / Address"
+                    )
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    NeonTextField(
+                        value = notes,
+                        onValueChange = { notes = it },
+                        label = "Notes for the Provider (Optional)"
+                    )
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    if (bookingState is BookingState.Loading) {
+                        CircularProgressIndicator(color = NeonBlue)
+                    } else {
+                        NeonButton(
+                            text = "CONFIRM BOOKING",
+                            onClick = { viewModel.createBooking(providerId, address, notes) },
+                            modifier = Modifier.fillMaxWidth(),
+                            enabled = address.isNotBlank()
+                        )
+                    }
+
+                    if (bookingState is BookingState.Error) {
+                        Text(
+                            text = (bookingState as BookingState.Error).message,
+                            color = NeonPink,
+                            modifier = Modifier.padding(top = 16.dp)
+                        )
+                    }
+                    
+                    Spacer(modifier = Modifier.height(24.dp))
+                    
+                    Text(
+                        text = "Your booking will be sent to the provider for approval.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = GrayText,
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                    )
+                }
             }
         }
     }
 }
+
+
