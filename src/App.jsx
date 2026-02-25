@@ -16,24 +16,24 @@ const translations = {
     myGigs: 'My Gigs',
     earnings: 'Earnings',
     logout: 'Logout',
-    
+
     // User Dashboard Headers
     postNewGig: 'Post a New Gig',
     yourActiveGigs: 'Your Active Gigs',
     gigHistory: 'Gig History',
-    
+
     // Worker Dashboard Headers
     availableGigsNearYou: 'Available Gigs Near You',
     yourActiveGigsWorker: 'Your Active Gigs',
     yourEarnings: 'Your Earnings',
-    
+
     // Common
     within10km: 'Within 10km',
     within5km: '5km radius',
     online: 'Online',
     customer: 'Customer',
     skilledWorker: 'Skilled Worker',
-    
+
     // Form Labels
     whatDoYouNeed: 'What do you need?',
     selectServiceType: 'Select service type...',
@@ -49,7 +49,7 @@ const translations = {
     locationDetails: 'Location Details',
     enterAddress: 'Enter your address or landmark...',
     postGig: 'Post Gig',
-    
+
     // Gig Details
     kitchenSinkRepair: 'Kitchen Sink Repair',
     fanInstallation: 'Fan Installation',
@@ -67,13 +67,13 @@ const translations = {
     details: 'Details',
     markComplete: 'Mark Complete',
     message: 'Message',
-    
+
     // Earnings
     thisMonth: 'This Month',
     gigsCompleted: 'Gigs Completed',
     rating: 'Rating',
     earningsOverview: 'Earnings Overview',
-    
+
     // Service Types
     plumbing: 'Plumbing',
     electrical: 'Electrical',
@@ -81,7 +81,7 @@ const translations = {
     painting: 'Painting',
     cleaning: 'Cleaning',
     other: 'Other',
-    
+
     // Worker Gigs
     pipeBurstEmergency: 'Pipe Burst Emergency',
     lightSwitchRepair: 'Light Switch Repair',
@@ -89,7 +89,7 @@ const translations = {
     high: 'high',
     normal: 'normal',
     low: 'low',
-    
+
     // Active Worker Gigs
     waterHeaterInstallation: 'Water Heater Installation',
     client: 'Client',
@@ -105,24 +105,24 @@ const translations = {
     myGigs: 'ನನ್ನ ಗಿಗ್ಗಳು',
     earnings: 'ಗಳಿಕೆ',
     logout: 'ಲಾಗ್‌ಔಟ್',
-    
+
     // User Dashboard Headers
     postNewGig: 'ಹೊಸ ಗಿಗ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ',
     yourActiveGigs: 'ನಿಮ್ಮ ಸಕ್ರಿಯ ಗಿಗ್ಗಳು',
     gigHistory: 'ಗಿಗ್ ಇತಿಹಾಸ',
-    
+
     // Worker Dashboard Headers
     availableGigsNearYou: 'ನಿಮ್ಮ ಬಳಿ ಲಭ್ಯವಿರುವ ಗಿಗ್ಗಳು',
     yourActiveGigsWorker: 'ನಿಮ್ಮ ಸಕ್ರಿಯ ಗಿಗ್ಗಳು',
     yourEarnings: 'ನಿಮ್ಮ ಗಳಿಕೆ',
-    
+
     // Common
     within10km: '10ಕಿ.ಮೀ ಒಳಗೆ',
     within5km: '5ಕಿ.ಮೀ ತ್ರಿಜ್ಯಾ',
     online: 'ಆನ್‌ಲೈನ್',
     customer: 'ಗ್ರಾಹಕ',
     skilledWorker: 'ಕುಶಲ ಕಾರ್ಮಿಕ',
-    
+
     // Form Labels
     whatDoYouNeed: 'ನಿಮಗೆ ಬೇಕಾದ್ದು ಏನು?',
     selectServiceType: 'ಸೇವಾ ಪ್ರಕಾರವನ್ನು ಆರಿಸಿ...',
@@ -138,7 +138,7 @@ const translations = {
     locationDetails: 'ಸ್ಥಳ ವಿವರಗಳು',
     enterAddress: 'ನಿಮ್ಮ ವಿಳಾಸ ಅಥವಾ ಲ್ಯಾಂಡ್‌ಮಾರ್ಕ್ ನಮೂದಿಸಿ...',
     postGig: 'ಗಿಗ್ ಅಪ್ಲೋಡ್',
-    
+
     // Gig Details
     kitchenSinkRepair: 'ಕಿಚನ್ ಸಿಂಕ್ ರಿಪೇರಿ',
     fanInstallation: 'ಫ್ಯಾನ್ ಸ್ಥಾಪನೆ',
@@ -156,13 +156,13 @@ const translations = {
     details: 'ವಿವರಗಳು',
     markComplete: 'ಪೂರ್ಣಗೊಂಡಿದೆ ಎಂದು ಗುರುತಿಸಿ',
     message: 'ಸಂದೇಶ',
-    
+
     // Earnings
     thisMonth: 'ಈ ತಿಂಗಳು',
     gigsCompleted: 'ಗಿಗ್‌ಗಳು ಪೂರ್ಣಗೊಂಡವು',
     rating: 'ರೇಟಿಂಗ್',
     earningsOverview: 'ಗಳಿಕೆ ಅವಲೋಕನ',
-    
+
     // Service Types
     plumbing: 'ಪ್ಲಂಬಿಂಗ್',
     electrical: 'ಎಲೆಕ್ಟ್ರಿಕಲ್',
@@ -170,7 +170,7 @@ const translations = {
     painting: 'ಪೇಂಟಿಂಗ್',
     cleaning: 'ಕ್ಲೀನಿಂಗ್',
     other: 'ಇತರೆ',
-    
+
     // Worker Gigs
     pipeBurstEmergency: 'ಪೈಪ್ ಬರ್ಸ್ಟ್ ತುರ್ತು',
     lightSwitchRepair: 'ಲೈಟ್ ಸ್ವಿಚ್ ರಿಪೇರಿ',
@@ -178,7 +178,7 @@ const translations = {
     high: 'ಎತ್ತರ',
     normal: 'ಸಾಮಾನ್ಯ',
     low: 'ಕಡಿಮೆ',
-    
+
     // Active Worker Gigs
     waterHeaterInstallation: 'ವಾಟರ್ ಹೀಟರ್ ಸ್ಥಾಪನೆ',
     client: 'ಗ್ರಾಹಕ',
@@ -194,24 +194,24 @@ const translations = {
     myGigs: 'मेरी गिग्स',
     earnings: 'कमाई',
     logout: 'लॉगआउट',
-    
+
     // User Dashboard Headers
     postNewGig: 'नई गिग पोस्ट करें',
     yourActiveGigs: 'आपकी सक्रिय गिग्स',
     gigHistory: 'गिग इतिहास',
-    
+
     // Worker Dashboard Headers
     availableGigsNearYou: 'आपके पास उपलब्ध गिग्स',
     yourActiveGigsWorker: 'आपकी सक्रिय गिग्स',
     yourEarnings: 'आपकी कमाई',
-    
+
     // Common
     within10km: '10कि.मी. के भीतर',
     within5km: '5कि.मी. त्रिज्या',
     online: 'ऑनलाइन',
     customer: 'ग्राहक',
     skilledWorker: 'कुशल कार्यकर्ता',
-    
+
     // Form Labels
     whatDoYouNeed: 'आपको क्या चाहिए?',
     selectServiceType: 'सेवा प्रकार चुनें...',
@@ -227,7 +227,7 @@ const translations = {
     locationDetails: 'स्थान विवरण',
     enterAddress: 'अपना पता या लैंडमार्क दर्ज करें...',
     postGig: 'गिग पोस्ट करें',
-    
+
     // Gig Details
     kitchenSinkRepair: 'किचन सिंक मरम्मत',
     fanInstallation: 'पंखे की स्थापना',
@@ -245,13 +245,13 @@ const translations = {
     details: 'विवरण',
     markComplete: 'पूर्ण चिह्नित करें',
     message: 'संदेश',
-    
+
     // Earnings
     thisMonth: 'इस महीने',
     gigsCompleted: 'पूर्ण गिग्स',
     rating: 'रेटिंग',
     earningsOverview: 'कमाई अवलोकन',
-    
+
     // Service Types
     plumbing: 'प्लंबिंग',
     electrical: 'इलेक्ट्रिकल',
@@ -259,7 +259,7 @@ const translations = {
     painting: 'पेंटिंग',
     cleaning: 'सफाई',
     other: 'अन्य',
-    
+
     // Worker Gigs
     pipeBurstEmergency: 'पाइप बर्स्ट आपातकाल',
     lightSwitchRepair: 'लाइट स्विच मरम्मत',
@@ -267,7 +267,7 @@ const translations = {
     high: 'उच्च',
     normal: 'सामान्य',
     low: 'कम',
-    
+
     // Active Worker Gigs
     waterHeaterInstallation: 'वाटर हीटर स्थापना',
     client: 'ग्राहक',
@@ -279,11 +279,11 @@ const translations = {
 // Language Selector Component
 function LanguageSelector() {
   const { language, setLanguage } = useContext(LanguageContext);
-  
+
   return (
     <div className="language-selector">
-      <select 
-        value={language} 
+      <select
+        value={language}
         onChange={(e) => setLanguage(e.target.value)}
         className="language-dropdown"
       >
@@ -352,6 +352,7 @@ function App() {
         {currentScreen === 'workerOTP' && <WorkerOTP onNavigate={navigateTo} onVerify={handleWorkerOTPVerified} phone={tempWorkerData?.phone} />}
         {currentScreen === 'userDashboard' && <UserDashboard userData={userData} onLogout={handleLogout} />}
         {currentScreen === 'workerDashboard' && <WorkerDashboard workerData={workerData} onLogout={handleLogout} />}
+        {currentScreen === 'emptyDashboard' && <EmptyDashboard onBack={() => navigateTo('landing')} />}
       </div>
     </LanguageContext.Provider>
   );
@@ -361,50 +362,30 @@ function App() {
 function LandingPage({ onNavigate }) {
   return (
     <div className="landing-container">
-      <div className="gradient-bg"></div>
       <div className="content-wrapper">
         <div className="logo-section">
-          <div className="logo-icon">⚡</div>
-          <h1 className="app-title">GigMarket</h1>
-          <p className="app-tagline">Connect. Work. Thrive.</p>
+          <div className="logo-icon-container">
+            <span className="lightning-icon">⚡</span>
+          </div>
+          <h1 className="app-title-gradient">GigMarket</h1>
+          <p className="app-subtitle">CONNECT. WORK. THRIVE.</p>
         </div>
 
-        <div className="role-cards">
-          <div className="role-card user-card" onClick={() => onNavigate('userLogin')}>
-            <div className="card-glow"></div>
-            <div className="card-content">
-              <div className="card-icon">👤</div>
-              <h2>I need help</h2>
-              <p>Find skilled workers near you</p>
-              <div className="neon-line"></div>
-              <span className="card-cta">Get Started →</span>
-            </div>
+        <div className="role-cards-container">
+          <div className="role-card-new help-card" onClick={() => onNavigate('emptyDashboard')}>
+            <div className="card-icon-new user-icon">👤</div>
+            <h2 className="card-title-new">I need help</h2>
+            <p className="card-desc-new">Find skilled workers near you</p>
+            <div className="card-divider cyan-line"></div>
+            <span className="card-link-new cyan-text">Get Started →</span>
           </div>
 
-          <div className="role-card worker-card" onClick={() => onNavigate('workerLogin')}>
-            <div className="card-glow"></div>
-            <div className="card-content">
-              <div className="card-icon">🛠️</div>
-              <h2>I'm a worker</h2>
-              <p>Find gigs in your area</p>
-              <div className="neon-line purple"></div>
-              <span className="card-cta">Start Earning →</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="features-preview">
-          <div className="feature-item">
-            <span className="feature-dot cyan"></span>
-            <span>5-10km Local Radius</span>
-          </div>
-          <div className="feature-item">
-            <span className="feature-dot purple"></span>
-            <span>Instant Matching</span>
-          </div>
-          <div className="feature-item">
-            <span className="feature-dot pink"></span>
-            <span>Secure Payments</span>
+          <div className="role-card-new worker-card-new" onClick={() => onNavigate('emptyDashboard')}>
+            <div className="card-icon-new worker-icon">🛠️</div>
+            <h2 className="card-title-new">I'm a worker</h2>
+            <p className="card-desc-new">Find gigs in your area</p>
+            <div className="card-divider purple-line"></div>
+            <span className="card-link-new purple-text">Start Earning →</span>
           </div>
         </div>
       </div>
@@ -446,7 +427,7 @@ function UserLogin({ onNavigate, onLogin }) {
               type="text"
               placeholder="Enter your name"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
             />
             <div className="input-glow"></div>
@@ -458,7 +439,7 @@ function UserLogin({ onNavigate, onLogin }) {
               type="tel"
               placeholder="+91 98765 43210"
               value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
             />
             <div className="input-glow"></div>
@@ -483,11 +464,11 @@ function UserLogin({ onNavigate, onLogin }) {
 
 // Worker Login Component
 function WorkerLogin({ onNavigate, onLogin }) {
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    phone: '', 
-    trade: '', 
-    experience: '' 
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    trade: '',
+    experience: ''
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -521,7 +502,7 @@ function WorkerLogin({ onNavigate, onLogin }) {
               type="text"
               placeholder="Enter your name"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
             />
             <div className="input-glow purple"></div>
@@ -533,7 +514,7 @@ function WorkerLogin({ onNavigate, onLogin }) {
               type="tel"
               placeholder="+91 98765 43210"
               value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
             />
             <div className="input-glow purple"></div>
@@ -544,7 +525,7 @@ function WorkerLogin({ onNavigate, onLogin }) {
               <label>Trade/Skill</label>
               <select
                 value={formData.trade}
-                onChange={(e) => setFormData({...formData, trade: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, trade: e.target.value })}
                 required
               >
                 <option value="">Select</option>
@@ -559,7 +540,7 @@ function WorkerLogin({ onNavigate, onLogin }) {
               <label>Experience</label>
               <select
                 value={formData.experience}
-                onChange={(e) => setFormData({...formData, experience: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                 required
               >
                 <option value="">Select</option>
@@ -621,19 +602,19 @@ function UserDashboard({ userData, onLogout }) {
         <div className="dashboard-card-content">
           <div className="dashboard-card-sidebar">
             <nav className="sidebar-nav" style={{ gap: '0.5rem' }}>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'post' ? 'active' : ''}`}
                 onClick={() => setActiveTab('post')}
               >
                 <span>➕</span> {t('postGig')}
               </button>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'active' ? 'active' : ''}`}
                 onClick={() => setActiveTab('active')}
               >
                 <span>📋</span> {t('activeGigs')}
               </button>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'history' ? 'active' : ''}`}
                 onClick={() => setActiveTab('history')}
               >
@@ -685,19 +666,19 @@ function WorkerDashboard({ workerData, onLogout }) {
         <div className="dashboard-card-content">
           <div className="dashboard-card-sidebar">
             <nav className="sidebar-nav" style={{ gap: '0.5rem' }}>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'available' ? 'active' : ''}`}
                 onClick={() => setActiveTab('available')}
               >
                 <span>🔍</span> {t('findGigs')}
               </button>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'active' ? 'active' : ''}`}
                 onClick={() => setActiveTab('active')}
               >
                 <span>⚡</span> {t('myGigs')}
               </button>
-              <button 
+              <button
                 className={`nav-item ${activeTab === 'earnings' ? 'active' : ''}`}
                 onClick={() => setActiveTab('earnings')}
               >
@@ -745,7 +726,7 @@ function PostGigForm({ t }) {
 
         <div className="input-group">
           <label>{t('describeWork')}</label>
-          <textarea 
+          <textarea
             placeholder={t('describePlaceholder')}
             className="dashboard-textarea"
             rows="4"
@@ -770,8 +751,8 @@ function PostGigForm({ t }) {
 
         <div className="input-group">
           <label>{t('locationDetails')}</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder={t('enterAddress')}
             className="dashboard-input"
           />
@@ -876,7 +857,7 @@ function WorkerActiveGigs({ t }) {
         </div>
         <div className="gig-progress">
           <div className="progress-bar">
-            <div className="progress-fill" style={{width: '60%'}}></div>
+            <div className="progress-fill" style={{ width: '60%' }}></div>
           </div>
           <span>{t('workInProgress')}</span>
         </div>
@@ -913,11 +894,11 @@ function Earnings({ t }) {
       <div className="earnings-chart-placeholder">
         <h4>{t('earningsOverview')}</h4>
         <div className="chart-mock">
-          <div className="chart-bar" style={{height: '40%'}}></div>
-          <div className="chart-bar" style={{height: '65%'}}></div>
-          <div className="chart-bar" style={{height: '45%'}}></div>
-          <div className="chart-bar" style={{height: '80%'}}></div>
-          <div className="chart-bar active" style={{height: '60%'}}></div>
+          <div className="chart-bar" style={{ height: '40%' }}></div>
+          <div className="chart-bar" style={{ height: '65%' }}></div>
+          <div className="chart-bar" style={{ height: '45%' }}></div>
+          <div className="chart-bar" style={{ height: '80%' }}></div>
+          <div className="chart-bar active" style={{ height: '60%' }}></div>
         </div>
       </div>
     </div>
@@ -932,7 +913,7 @@ function UserOTP({ onNavigate, onVerify, phone }) {
 
   const handleOtpChange = (index, value) => {
     if (isNaN(value)) return;
-    
+
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
@@ -1032,7 +1013,7 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
 
   const handleOtpChange = (index, value) => {
     if (isNaN(value)) return;
-    
+
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
@@ -1119,6 +1100,21 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
         <div className="auth-footer">
           <p>Didn't receive code? <span onClick={handleResend} className="switch-link">Resend OTP</span></p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// Empty Dashboard Component
+function EmptyDashboard({ onBack }) {
+  return (
+    <div className="empty-dashboard-container">
+      <button className="back-btn-top" onClick={onBack}>←</button>
+      <div className="empty-dashboard-content">
+        <div className="empty-dashboard-icon">🏠</div>
+        <h1>Dashboard</h1>
+        <p>No activities yet.</p>
+        <p className="empty-sub">Your notifications and recent gigs will appear here.</p>
       </div>
     </div>
   );
