@@ -6,7 +6,7 @@ const User = require("../models/User");
 // Register
 router.post("/register", async (req, res) => {
   try {
-    const { name, phone, password, role } = req.body;
+    const { name, phone, password } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -14,7 +14,6 @@ router.post("/register", async (req, res) => {
       name,
       phone,
       password: hashedPassword,
-      role: role || "customer"
     });
 
     await user.save();
@@ -36,12 +35,12 @@ router.post("/login", async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Invalid password" });
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-    res.json({ success: true, token, role: user.role });
+    res.json({ success: true, token });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }

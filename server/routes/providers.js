@@ -2,12 +2,10 @@ const router = require("express").Router();
 const Provider = require("../models/Provider");
 
 // 🔍 Search providers within 5km radius
-// GET /api/providers/nearby?lat=12.97&lng=76.58&radius=5000&category=Repairs&page=1&limit=10
+// GET /api/providers/nearby?lat=12.97&lng=76.58&radius=5000&category=Repairs
 router.get("/nearby", async (req, res) => {
   try {
-    const { lat, lng, radius = 5000, category, page = 1, limit = 10 } = req.query;
-    const skip = (page - 1) * limit;
-
+    const { lat, lng, radius = 5000, category } = req.query;
     const query = {
       location: {
         $nearSphere: {
@@ -19,11 +17,8 @@ router.get("/nearby", async (req, res) => {
     };
     if (category) query.category = category;
 
-    const providers = await Provider.find(query)
-      .skip(parseInt(skip))
-      .limit(parseInt(limit));
-
-    res.json({ success: true, count: providers.length, page: parseInt(page), providers });
+    const providers = await Provider.find(query).limit(20);
+    res.json({ success: true, count: providers.length, providers });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
