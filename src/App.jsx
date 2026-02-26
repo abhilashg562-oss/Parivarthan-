@@ -1,6 +1,10 @@
-
 import React, { useState, createContext, useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
+
+// Import placeholder dashboard components
+import UserDashboardPlaceholder from './pages/UserDashboard';
+import WorkerDashboardPlaceholder from './pages/WorkerDashboard';
 
 // Language Context
 const LanguageContext = createContext();
@@ -8,7 +12,6 @@ const LanguageContext = createContext();
 // Translations
 const translations = {
   en: {
-    // Navigation
     postGig: 'Post a Gig',
     activeGigs: 'Active Gigs',
     history: 'History',
@@ -16,25 +19,17 @@ const translations = {
     myGigs: 'My Gigs',
     earnings: 'Earnings',
     logout: 'Logout',
-
-    // User Dashboard Headers
     postNewGig: 'Post a New Gig',
     yourActiveGigs: 'Your Active Gigs',
     gigHistory: 'Gig History',
-
-    // Worker Dashboard Headers
     availableGigsNearYou: 'Available Gigs Near You',
     yourActiveGigsWorker: 'Your Active Gigs',
     yourEarnings: 'Your Earnings',
-
-    // Common
     within10km: 'Within 10km',
     within5km: '5km radius',
     online: 'Online',
     customer: 'Customer',
     skilledWorker: 'Skilled Worker',
-
-    // Form Labels
     whatDoYouNeed: 'What do you need?',
     selectServiceType: 'Select service type...',
     budget: 'Budget (₹)',
@@ -49,8 +44,6 @@ const translations = {
     locationDetails: 'Location Details',
     enterAddress: 'Enter your address or landmark...',
     postGig: 'Post Gig',
-
-    // Gig Details
     kitchenSinkRepair: 'Kitchen Sink Repair',
     fanInstallation: 'Fan Installation',
     bathroomLeakFix: 'Bathroom Leak Fix',
@@ -67,37 +60,28 @@ const translations = {
     details: 'Details',
     markComplete: 'Mark Complete',
     message: 'Message',
-
-    // Earnings
     thisMonth: 'This Month',
     gigsCompleted: 'Gigs Completed',
     rating: 'Rating',
     earningsOverview: 'Earnings Overview',
-
-    // Service Types
     plumbing: 'Plumbing',
     electrical: 'Electrical',
     carpentry: 'Carpentry',
     painting: 'Painting',
     cleaning: 'Cleaning',
     other: 'Other',
-
-    // Worker Gigs
     pipeBurstEmergency: 'Pipe Burst Emergency',
     lightSwitchRepair: 'Light Switch Repair',
     doorHandleFix: 'Door Handle Fix',
     high: 'high',
     normal: 'normal',
     low: 'low',
-
-    // Active Worker Gigs
     waterHeaterInstallation: 'Water Heater Installation',
     client: 'Client',
     away: 'away',
     workInProgress: 'Work in progress',
   },
   kn: {
-    // Navigation
     postGig: 'ಗಿಗ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ',
     activeGigs: 'ಸಕ್ರಿಯ ಗಿಗ್ಗಳು',
     history: 'ಇತಿಹಾಸ',
@@ -105,25 +89,17 @@ const translations = {
     myGigs: 'ನನ್ನ ಗಿಗ್ಗಳು',
     earnings: 'ಗಳಿಕೆ',
     logout: 'ಲಾಗ್‌ಔಟ್',
-
-    // User Dashboard Headers
     postNewGig: 'ಹೊಸ ಗಿಗ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ',
     yourActiveGigs: 'ನಿಮ್ಮ ಸಕ್ರಿಯ ಗಿಗ್ಗಳು',
     gigHistory: 'ಗಿಗ್ ಇತಿಹಾಸ',
-
-    // Worker Dashboard Headers
     availableGigsNearYou: 'ನಿಮ್ಮ ಬಳಿ ಲಭ್ಯವಿರುವ ಗಿಗ್ಗಳು',
     yourActiveGigsWorker: 'ನಿಮ್ಮ ಸಕ್ರಿಯ ಗಿಗ್ಗಳು',
     yourEarnings: 'ನಿಮ್ಮ ಗಳಿಕೆ',
-
-    // Common
     within10km: '10ಕಿ.ಮೀ ಒಳಗೆ',
     within5km: '5ಕಿ.ಮೀ ತ್ರಿಜ್ಯಾ',
     online: 'ಆನ್‌ಲೈನ್',
     customer: 'ಗ್ರಾಹಕ',
     skilledWorker: 'ಕುಶಲ ಕಾರ್ಮಿಕ',
-
-    // Form Labels
     whatDoYouNeed: 'ನಿಮಗೆ ಬೇಕಾದ್ದು ಏನು?',
     selectServiceType: 'ಸೇವಾ ಪ್ರಕಾರವನ್ನು ಆರಿಸಿ...',
     budget: 'ಬಜೆಟ್ (₹)',
@@ -138,8 +114,6 @@ const translations = {
     locationDetails: 'ಸ್ಥಳ ವಿವರಗಳು',
     enterAddress: 'ನಿಮ್ಮ ವಿಳಾಸ ಅಥವಾ ಲ್ಯಾಂಡ್‌ಮಾರ್ಕ್ ನಮೂದಿಸಿ...',
     postGig: 'ಗಿಗ್ ಅಪ್ಲೋಡ್',
-
-    // Gig Details
     kitchenSinkRepair: 'ಕಿಚನ್ ಸಿಂಕ್ ರಿಪೇರಿ',
     fanInstallation: 'ಫ್ಯಾನ್ ಸ್ಥಾಪನೆ',
     bathroomLeakFix: 'ಬಾತ್‌ರೂಮ್ ಲೀಕ್ ಫಿಕ್ಸ್',
@@ -156,37 +130,28 @@ const translations = {
     details: 'ವಿವರಗಳು',
     markComplete: 'ಪೂರ್ಣಗೊಂಡಿದೆ ಎಂದು ಗುರುತಿಸಿ',
     message: 'ಸಂದೇಶ',
-
-    // Earnings
     thisMonth: 'ಈ ತಿಂಗಳು',
     gigsCompleted: 'ಗಿಗ್‌ಗಳು ಪೂರ್ಣಗೊಂಡವು',
     rating: 'ರೇಟಿಂಗ್',
     earningsOverview: 'ಗಳಿಕೆ ಅವಲೋಕನ',
-
-    // Service Types
     plumbing: 'ಪ್ಲಂಬಿಂಗ್',
     electrical: 'ಎಲೆಕ್ಟ್ರಿಕಲ್',
     carpentry: 'ಕಾರ್ಪೆಂಟರಿ',
     painting: 'ಪೇಂಟಿಂಗ್',
     cleaning: 'ಕ್ಲೀನಿಂಗ್',
     other: 'ಇತರೆ',
-
-    // Worker Gigs
     pipeBurstEmergency: 'ಪೈಪ್ ಬರ್ಸ್ಟ್ ತುರ್ತು',
     lightSwitchRepair: 'ಲೈಟ್ ಸ್ವಿಚ್ ರಿಪೇರಿ',
     doorHandleFix: 'ಬಾಗಿಲು ಹ್ಯಾಂಡಲ್ ಫಿಕ್ಸ್',
     high: 'ಎತ್ತರ',
     normal: 'ಸಾಮಾನ್ಯ',
     low: 'ಕಡಿಮೆ',
-
-    // Active Worker Gigs
     waterHeaterInstallation: 'ವಾಟರ್ ಹೀಟರ್ ಸ್ಥಾಪನೆ',
     client: 'ಗ್ರಾಹಕ',
     away: 'ದೂರ',
     workInProgress: 'ಕೆಲಸ ಪ್ರಗತಿಯಲ್ಲಿ',
   },
   hi: {
-    // Navigation
     postGig: 'गिग पोस्ट करें',
     activeGigs: 'सक्रिय गिग्स',
     history: 'इतिहास',
@@ -194,25 +159,17 @@ const translations = {
     myGigs: 'मेरी गिग्स',
     earnings: 'कमाई',
     logout: 'लॉगआउट',
-
-    // User Dashboard Headers
     postNewGig: 'नई गिग पोस्ट करें',
     yourActiveGigs: 'आपकी सक्रिय गिग्स',
     gigHistory: 'गिग इतिहास',
-
-    // Worker Dashboard Headers
     availableGigsNearYou: 'आपके पास उपलब्ध गिग्स',
     yourActiveGigsWorker: 'आपकी सक्रिय गिग्स',
     yourEarnings: 'आपकी कमाई',
-
-    // Common
     within10km: '10कि.मी. के भीतर',
     within5km: '5कि.मी. त्रिज्या',
     online: 'ऑनलाइन',
     customer: 'ग्राहक',
     skilledWorker: 'कुशल कार्यकर्ता',
-
-    // Form Labels
     whatDoYouNeed: 'आपको क्या चाहिए?',
     selectServiceType: 'सेवा प्रकार चुनें...',
     budget: 'बजट (₹)',
@@ -227,8 +184,6 @@ const translations = {
     locationDetails: 'स्थान विवरण',
     enterAddress: 'अपना पता या लैंडमार्क दर्ज करें...',
     postGig: 'गिग पोस्ट करें',
-
-    // Gig Details
     kitchenSinkRepair: 'किचन सिंक मरम्मत',
     fanInstallation: 'पंखे की स्थापना',
     bathroomLeakFix: 'बाथरूम रिसाव ठीक करें',
@@ -245,30 +200,22 @@ const translations = {
     details: 'विवरण',
     markComplete: 'पूर्ण चिह्नित करें',
     message: 'संदेश',
-
-    // Earnings
     thisMonth: 'इस महीने',
     gigsCompleted: 'पूर्ण गिग्स',
     rating: 'रेटिंग',
     earningsOverview: 'कमाई अवलोकन',
-
-    // Service Types
     plumbing: 'प्लंबिंग',
     electrical: 'इलेक्ट्रिकल',
     carpentry: 'कारपेंटरी',
     painting: 'पेंटिंग',
     cleaning: 'सफाई',
     other: 'अन्य',
-
-    // Worker Gigs
     pipeBurstEmergency: 'पाइप बर्स्ट आपातकाल',
     lightSwitchRepair: 'लाइट स्विच मरम्मत',
     doorHandleFix: 'दरवाजे का हैंडल ठीक करें',
     high: 'उच्च',
     normal: 'सामान्य',
     low: 'कम',
-
-    // Active Worker Gigs
     waterHeaterInstallation: 'वाटर हीटर स्थापना',
     client: 'ग्राहक',
     away: 'दूर',
@@ -301,92 +248,39 @@ function useTranslation() {
   return (key) => translations[language][key] || translations['en'][key] || key;
 }
 
-// Main App Component
-function App() {
-  const [currentScreen, setCurrentScreen] = useState('landing'); // landing, userLogin, workerLogin, userOTP, workerOTP, userDashboard, workerDashboard
-  const [userData, setUserData] = useState(null);
-  const [workerData, setWorkerData] = useState(null);
-  const [language, setLanguage] = useState('en');
-  const [tempUserData, setTempUserData] = useState(null);
-  const [tempWorkerData, setTempWorkerData] = useState(null);
-
-  const navigateTo = (screen) => {
-    setCurrentScreen(screen);
-  };
-
-  const handleUserLogin = (data) => {
-    setTempUserData(data);
-    navigateTo('userOTP');
-  };
-
-  const handleWorkerLogin = (data) => {
-    setTempWorkerData(data);
-    navigateTo('workerOTP');
-  };
-
-  const handleUserOTPVerified = () => {
-    setUserData(tempUserData);
-    setTempUserData(null);
-    navigateTo('userDashboard');
-  };
-
-  const handleWorkerOTPVerified = () => {
-    setWorkerData(tempWorkerData);
-    setTempWorkerData(null);
-    navigateTo('workerDashboard');
-  };
-
-  const handleLogout = () => {
-    setUserData(null);
-    setWorkerData(null);
-    navigateTo('landing');
-  };
+// Landing Page Component - REDESIGNED
+function LandingPage() {
+  const navigate = useNavigate();
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
-      <div className="app">
-        {currentScreen === 'landing' && <LandingPage onNavigate={navigateTo} />}
-        {currentScreen === 'userLogin' && <UserLogin onNavigate={navigateTo} onLogin={handleUserLogin} />}
-        {currentScreen === 'workerLogin' && <WorkerLogin onNavigate={navigateTo} onLogin={handleWorkerLogin} />}
-        {currentScreen === 'userOTP' && <UserOTP onNavigate={navigateTo} onVerify={handleUserOTPVerified} phone={tempUserData?.phone} />}
-        {currentScreen === 'workerOTP' && <WorkerOTP onNavigate={navigateTo} onVerify={handleWorkerOTPVerified} phone={tempWorkerData?.phone} />}
-        {currentScreen === 'userDashboard' && <UserDashboard userData={userData} onLogout={handleLogout} />}
-        {currentScreen === 'workerDashboard' && <WorkerDashboard workerData={workerData} onLogout={handleLogout} />}
-        {currentScreen === 'emptyDashboard' && <EmptyDashboard onBack={() => navigateTo('landing')} />}
-      </div>
-    </LanguageContext.Provider>
-  );
-}
-
-// Landing Page Component
-function LandingPage({ onNavigate }) {
-  return (
-    <div className="landing-container">
-      <div className="content-wrapper">
-        <div className="logo-section">
-          <div className="logo-icon-container">
-            <span className="lightning-icon">⚡</span>
-          </div>
-          <h1 className="app-title-gradient">GigMarket</h1>
-          <p className="app-subtitle">CONNECT. WORK. THRIVE.</p>
+    <div className="landing-container-new">
+      <div className="content-wrapper-new">
+        <div className="logo-section-new">
+          <span className="lightning-icon-new">⚡</span>
+          <h1 className="app-title-gradient-new">GigMarket</h1>
+          <p className="app-subtitle-new">CONNECT. WORK. THRIVE.</p>
         </div>
 
-        <div className="role-cards-container">
-          <div className="role-card-new help-card" onClick={() => onNavigate('emptyDashboard')}>
-            <div className="card-icon-new user-icon">👤</div>
+        <div className="role-cards-container-new">
+          <Link to="/dashboard/user" className="role-card-new user-card">
+            <div className="card-icon-new">
+              <span className="user-icon-glow">👤</span>
+            </div>
             <h2 className="card-title-new">I need help</h2>
             <p className="card-desc-new">Find skilled workers near you</p>
             <div className="card-divider cyan-line"></div>
             <span className="card-link-new cyan-text">Get Started →</span>
-          </div>
+          </Link>
 
-          <div className="role-card-new worker-card-new" onClick={() => onNavigate('emptyDashboard')}>
-            <div className="card-icon-new worker-icon">🛠️</div>
+          <Link to="/dashboard/worker" className="role-card-new worker-card">
+            <div className="card-icon-new">
+              <span className="worker-icon-glow">🛠️</span>
+            </div>
             <h2 className="card-title-new">I'm a worker</h2>
             <p className="card-desc-new">Find gigs in your area</p>
             <div className="card-divider purple-line"></div>
             <span className="card-link-new purple-text">Start Earning →</span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
@@ -401,7 +295,6 @@ function UserLogin({ onNavigate, onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
     setTimeout(() => {
       onLogin(formData);
       setIsLoading(false);
@@ -570,9 +463,9 @@ function WorkerLogin({ onNavigate, onLogin }) {
   );
 }
 
-// User Dashboard Component
-function UserDashboard({ userData, onLogout }) {
-  const [activeTab, setActiveTab] = useState('post'); // post, active, history
+// User Dashboard Component (Full Version)
+function UserDashboardFull({ userData, onLogout }) {
+  const [activeTab, setActiveTab] = useState('post');
   const t = useTranslation();
 
   return (
@@ -634,9 +527,9 @@ function UserDashboard({ userData, onLogout }) {
   );
 }
 
-// Worker Dashboard Component
-function WorkerDashboard({ workerData, onLogout }) {
-  const [activeTab, setActiveTab] = useState('available'); // available, active, earnings
+// Worker Dashboard Component (Full Version)
+function WorkerDashboardFull({ workerData, onLogout }) {
+  const [activeTab, setActiveTab] = useState('available');
   const t = useTranslation();
 
   return (
@@ -698,7 +591,7 @@ function WorkerDashboard({ workerData, onLogout }) {
   );
 }
 
-// Sub-components for User Dashboard
+// Sub-components
 function PostGigForm({ t }) {
   return (
     <div className="form-card">
@@ -813,7 +706,6 @@ function GigHistory({ t }) {
   );
 }
 
-// Sub-components for Worker Dashboard
 function AvailableGigs({ t }) {
   const gigs = [
     { id: 1, title: t('pipeBurstEmergency'), distance: '2.3km', budget: '₹1,500', urgency: 'high', category: t('plumbing') },
@@ -905,7 +797,7 @@ function Earnings({ t }) {
   );
 }
 
-// User OTP Verification Component
+// User OTP Component
 function UserOTP({ onNavigate, onVerify, phone }) {
   const [otp, setOtp] = useState(['', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
@@ -913,13 +805,10 @@ function UserOTP({ onNavigate, onVerify, phone }) {
 
   const handleOtpChange = (index, value) => {
     if (isNaN(value)) return;
-
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
     setError('');
-
-    // Auto-focus next input
     if (value && index < 3) {
       const nextInput = document.getElementById(`user-otp-${index + 1}`);
       if (nextInput) nextInput.focus();
@@ -929,9 +818,7 @@ function UserOTP({ onNavigate, onVerify, phone }) {
   const handleKeyDown = (index, e) => {
     if (e.key === 'Backspace' && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`user-otp-${index - 1}`);
-      if (prevInput) {
-        prevInput.focus();
-      }
+      if (prevInput) prevInput.focus();
     }
   };
 
@@ -943,16 +830,10 @@ function UserOTP({ onNavigate, onVerify, phone }) {
       return;
     }
     setIsLoading(true);
-    // Demo OTP - any 4 digits will work
     setTimeout(() => {
       onVerify();
       setIsLoading(false);
     }, 1000);
-  };
-
-  const handleResend = () => {
-    // Demo resend
-    alert('OTP resent to ' + phone);
   };
 
   return (
@@ -960,13 +841,11 @@ function UserOTP({ onNavigate, onVerify, phone }) {
       <div className="gradient-bg"></div>
       <div className="auth-card centered">
         <button className="back-btn" onClick={() => onNavigate('userLogin')}>← Back</button>
-
         <div className="auth-header">
           <div className="auth-icon">🔐</div>
           <h2>Verify OTP</h2>
           <p>Enter the 4-digit code sent to {phone}</p>
         </div>
-
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="otp-input-group">
             {otp.map((digit, index) => (
@@ -983,29 +862,21 @@ function UserOTP({ onNavigate, onVerify, phone }) {
               />
             ))}
           </div>
-
           {error && <p className="error-message">{error}</p>}
-
           <p className="otp-hint">Demo: Enter any 4-digit number</p>
-
           <button type="submit" className="submit-btn" disabled={isLoading}>
-            {isLoading ? (
-              <span className="loading-spinner"></span>
-            ) : (
-              'Verify & Login'
-            )}
+            {isLoading ? <span className="loading-spinner"></span> : 'Verify & Login'}
           </button>
         </form>
-
         <div className="auth-footer">
-          <p>Didn't receive code? <span onClick={handleResend} className="switch-link">Resend OTP</span></p>
+          <p>Didn't receive code? <span onClick={() => alert('OTP resent to ' + phone)} className="switch-link">Resend OTP</span></p>
         </div>
       </div>
     </div>
   );
 }
 
-// Worker OTP Verification Component
+// Worker OTP Component
 function WorkerOTP({ onNavigate, onVerify, phone }) {
   const [otp, setOtp] = useState(['', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
@@ -1013,13 +884,10 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
 
   const handleOtpChange = (index, value) => {
     if (isNaN(value)) return;
-
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
     setError('');
-
-    // Auto-focus next input
     if (value && index < 3) {
       const nextInput = document.getElementById(`worker-otp-${index + 1}`);
       if (nextInput) nextInput.focus();
@@ -1029,9 +897,7 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
   const handleKeyDown = (index, e) => {
     if (e.key === 'Backspace' && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`worker-otp-${index - 1}`);
-      if (prevInput) {
-        prevInput.focus();
-      }
+      if (prevInput) prevInput.focus();
     }
   };
 
@@ -1043,16 +909,10 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
       return;
     }
     setIsLoading(true);
-    // Demo OTP - any 4 digits will work
     setTimeout(() => {
       onVerify();
       setIsLoading(false);
     }, 1000);
-  };
-
-  const handleResend = () => {
-    // Demo resend
-    alert('OTP resent to ' + phone);
   };
 
   return (
@@ -1060,13 +920,11 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
       <div className="gradient-bg"></div>
       <div className="auth-card worker centered">
         <button className="back-btn" onClick={() => onNavigate('workerLogin')}>← Back</button>
-
         <div className="auth-header">
           <div className="auth-icon purple">🔐</div>
           <h2>Verify OTP</h2>
           <p>Enter the 4-digit code sent to {phone}</p>
         </div>
-
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="otp-input-group">
             {otp.map((digit, index) => (
@@ -1083,41 +941,87 @@ function WorkerOTP({ onNavigate, onVerify, phone }) {
               />
             ))}
           </div>
-
           {error && <p className="error-message">{error}</p>}
-
           <p className="otp-hint">Demo: Enter any 4-digit number</p>
-
           <button type="submit" className="submit-btn purple" disabled={isLoading}>
-            {isLoading ? (
-              <span className="loading-spinner"></span>
-            ) : (
-              'Verify & Login'
-            )}
+            {isLoading ? <span className="loading-spinner"></span> : 'Verify & Login'}
           </button>
         </form>
-
         <div className="auth-footer">
-          <p>Didn't receive code? <span onClick={handleResend} className="switch-link">Resend OTP</span></p>
+          <p>Didn't receive code? <span onClick={() => alert('OTP resent to ' + phone)} className="switch-link">Resend OTP</span></p>
         </div>
       </div>
     </div>
   );
 }
 
-// Empty Dashboard Component
-function EmptyDashboard({ onBack }) {
+// Main App Component
+function App() {
+  const [currentScreen, setCurrentScreen] = useState('landing');
+  const [userData, setUserData] = useState(null);
+  const [workerData, setWorkerData] = useState(null);
+  const [language, setLanguage] = useState('en');
+  const [tempUserData, setTempUserData] = useState(null);
+  const [tempWorkerData, setTempWorkerData] = useState(null);
+
+  const navigateTo = (screen) => {
+    setCurrentScreen(screen);
+  };
+
+  const handleUserLogin = (data) => {
+    setTempUserData(data);
+    navigateTo('userOTP');
+  };
+
+  const handleWorkerLogin = (data) => {
+    setTempWorkerData(data);
+    navigateTo('workerOTP');
+  };
+
+  const handleUserOTPVerified = () => {
+    setUserData(tempUserData);
+    setTempUserData(null);
+    navigateTo('userDashboard');
+  };
+
+  const handleWorkerOTPVerified = () => {
+    setWorkerData(tempWorkerData);
+    setTempWorkerData(null);
+    navigateTo('workerDashboard');
+  };
+
+  const handleLogout = () => {
+    setUserData(null);
+    setWorkerData(null);
+    navigateTo('landing');
+  };
+
   return (
-    <div className="empty-dashboard-container">
-      <button className="back-btn-top" onClick={onBack}>←</button>
-      <div className="empty-dashboard-content">
-        <div className="empty-dashboard-icon">🏠</div>
-        <h1>Dashboard</h1>
-        <p>No activities yet.</p>
-        <p className="empty-sub">Your notifications and recent gigs will appear here.</p>
-      </div>
-    </div>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      <Router>
+        <div className="app">
+          <Routes>
+            {/* Landing Page - New Design */}
+            <Route path="/" element={<LandingPage />} />
+            
+            {/* New Dashboard Routes (Empty Placeholders) */}
+            <Route path="/dashboard/user" element={<UserDashboardPlaceholder />} />
+            <Route path="/dashboard/worker" element={<WorkerDashboardPlaceholder />} />
+          </Routes>
+          
+          {/* Legacy screen rendering (kept for existing flow - these use state-based navigation) */}
+          {currentScreen === 'landing' && <LandingPage />}
+          {currentScreen === 'userLogin' && <UserLogin onNavigate={navigateTo} onLogin={handleUserLogin} />}
+          {currentScreen === 'workerLogin' && <WorkerLogin onNavigate={navigateTo} onLogin={handleWorkerLogin} />}
+          {currentScreen === 'userOTP' && <UserOTP onNavigate={navigateTo} onVerify={handleUserOTPVerified} phone={tempUserData?.phone} />}
+          {currentScreen === 'workerOTP' && <WorkerOTP onNavigate={navigateTo} onVerify={handleWorkerOTPVerified} phone={tempWorkerData?.phone} />}
+          {currentScreen === 'userDashboard' && <UserDashboardFull userData={userData} onLogout={handleLogout} />}
+          {currentScreen === 'workerDashboard' && <WorkerDashboardFull workerData={workerData} onLogout={handleLogout} />}
+        </div>
+      </Router>
+    </LanguageContext.Provider>
   );
 }
 
 export default App;
+
